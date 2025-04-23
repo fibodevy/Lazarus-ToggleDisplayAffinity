@@ -32,7 +32,7 @@ procedure ToggleDisplayAffinity(Sender: TObject);
 var
   lAffinity: DWORD;
 begin
-  itmViewToggleDisplayAffinity.Checked := SetWindowDisplayAffinity(LazarusIDE.GetMainBar.Handle, IfThen(GetWindowDisplayAffinity(LazarusIDE.GetMainBar.Handle, @lAffinity) and (lAffinity = 0), $11, 0));
+  itmViewToggleDisplayAffinity.Checked := GetWindowDisplayAffinity(LazarusIDE.GetMainBar.Handle, @lAffinity) and SetWindowDisplayAffinity(LazarusIDE.GetMainBar.Handle, IfThen(lAffinity = 0, $11, 0)) and (lAffinity = 0);
 end;
 {$endif}
 
